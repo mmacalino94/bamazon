@@ -1,13 +1,11 @@
-//require mysql and inquirer
 var mysql = require('mysql');
 var inquirer = require('inquirer');
-//create connection to db
 var connection = mysql.createConnection({
-  host: "bamazon",
+  host: "local host",
   port: 3306,
   user: "root",
   password: "root",
-  database: "Bamazon"
+  database: "bamazon"
 })
 
 function start(){
@@ -31,7 +29,6 @@ function start(){
   });
 }
 
-//views all inventory
 function viewProducts(){
   console.log('>>>>>>Viewing Products<<<<<<');
 
@@ -48,7 +45,6 @@ function viewProducts(){
   });
 }
 
-//views inventory lower than 5
 function viewLowInventory(){
   console.log('>>>>>>Viewing Low Inventory<<<<<<');
 
@@ -67,14 +63,12 @@ function viewLowInventory(){
   });
 }
 
-//displays prompt to add more of an item to the store and asks how much
 function addToInventory(){
   console.log('>>>>>>Adding to Inventory<<<<<<');
 
   connection.query('SELECT * FROM Products', function(err, res){
   if(err) throw err;
   var itemArray = [];
-  //pushes each item into an itemArray
   for(var i=0; i<res.length; i++){
     itemArray.push(res[i].ProductName);
   }
@@ -111,12 +105,10 @@ function addToInventory(){
   });
 }
 
-//allows manager to add a completely new product to store
 function addNewProduct(){
   console.log('>>>>>>Adding New Product<<<<<<');
   var deptNames = [];
 
-  //grab name of departments
   connection.query('SELECT * FROM Departments', function(err, res){
     if(err) throw err;
     for(var i = 0; i<res.length; i++){

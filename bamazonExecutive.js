@@ -1,13 +1,11 @@
-//require mysql and inquirer
 var mysql = require('mysql');
 var inquirer = require('inquirer');
-//create connection to db
 var connection = mysql.createConnection({
-  host: "bamazon",
+  host: "local host",
   port: 3306,
   user: "root",
   password: "root",
-  database: "Bamazon"
+  database: "bamazon"
 })
 
 function start(){
@@ -27,9 +25,7 @@ function start(){
   });
 }
 
-//view product sales by department
 function viewProductByDept(){
-  //prints the items for sale and their details
   connection.query('SELECT * FROM Departments', function(err, res){
     if(err) throw err;
     console.log('>>>>>>Product Sales by Department<<<<<<');
@@ -43,10 +39,8 @@ function viewProductByDept(){
   })
 }
 
-  //create a new department
   function createNewDept(){
     console.log('>>>>>>Creating New Department<<<<<<');
-    //prompts to add deptName and numbers. if no value is then by default = 0
     inquirer.prompt([
     {
       type: "input",

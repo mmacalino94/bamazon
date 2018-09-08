@@ -13,7 +13,7 @@ CREATE TABLE Products(
 
 select * from Products;
 
-INSERT INTO Products(ProductName,DepartmentName,Price,StockQuantity)
+INSERT INTO Products(ProductName, DepartmentName, Price, StockQuantity)
 VALUES ("Kingdom Hearts 3","ENTERTAINMENT",49.95,150),
     ("Breath of the Wild","ENTERTAINMENT",59.99,200),
     ("Crate of Gochujang","GROCERY",24.50,50),
